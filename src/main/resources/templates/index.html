@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha512-gMjQeDaELJ0ryCI+FtItusU9MkAifCZcGq789FrzkiM49D8lbDhoaUaIX4ASU187wofMNlgBJ4ckbrXM9sE6Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Contact List</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Contact List</h1>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.id}"></td>
+            <td th:text="${contact.firstName}"></td>
+            <td th:text="${contact.lastName}"></td>
+            <td th:text="${contact.email}"></td>
+            <td th:text="${contact.phoneNumber}"></td>
+            <td th:text="${contact.address}"></td>
+            <td th:text="${contact.city}"></td>
+            <td th:text="${contact.state}"></td>
+            <td th:text="${contact.postalCode}"></td>
+            <td th:text="${contact.country}"></td>
+            <td>
+                 <a th:href="@{/__${contact.id}__/update}">
+					 <i class="fas fa-user-edit"></i>Edit</a>
+            </td>
+            <td>
+                 <a th:href="@{/__${contact.id}__/delete}">
+					 <i class="fas fa-user-times"></i>Delete</a>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <a class="btn btn-primary" th:href="@{/create}">Create Contact</a>
+	</div>
+	
+</body>
+</html>
